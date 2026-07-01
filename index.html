@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JTEKT Digital Signage</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="clock"></div>
+
+<div class="slideshow">
+
+    <img src="images/slide1.jpg" class="slide active">
+    <img src="images/slide2.jpg" class="slide">
+    <img src="images/slide3.jpg" class="slide">
+    <img src="images/slide4.jpg" class="slide">
+    <img src="images/slide5.jpg" class="slide">
+
+</div>
+
+<script>
+
+function updateClock() {
+    document.getElementById("clock").innerHTML =
+        new Date().toLocaleString();
+}
+
+setInterval(updateClock,1000);
+updateClock();
+
+const slides = document.querySelectorAll(".slide");
+
+let currentSlide = 0;
+
+function nextSlide() {
+
+    slides[currentSlide].classList.remove("active");
+
+    currentSlide++;
+
+    if (currentSlide >= slides.length) {
+        currentSlide = 0;
+    }
+
+    slides[currentSlide].classList.add("active");
+}
+
+setInterval(nextSlide,7000);
+
+</script>
+
+</body>
+</html>
